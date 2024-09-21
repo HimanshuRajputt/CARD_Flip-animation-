@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .card {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            perspective: 1000px; /* Enable 3D space */
+            
+        }
+        .card-side {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden; /* Hide the back of the element when flipped */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 2.6s;
+            border-radius: 40px;
+        }
+        .card-side.front {
+            background-color: #7adacd;
+        }
+        .card-side.back {
+            background-color: #588a59;
+            transform: rotateY(180deg); /* Start the back side hidden by rotating it */
+        }
+        .card:hover .card-side.front {
+            transform: rotateY(180deg); /* Rotate the front side to the back */
+            /* mask-image: url(https://masai-website-images.s3.ap-south-1.amazonaws.com/salesken_baefe048ac.svg); */
+        }
+        .card:hover .card-side.back {
+            transform: rotateY(0deg); /* Rotate the back side to the front */
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-side front">
+            <div>Front Side</div>
+        </div>
+        <div class="card-side back">
+            <div>Back Side</div>
+        </div>
+    </div>
+</body>
+</html>
